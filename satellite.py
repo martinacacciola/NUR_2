@@ -224,7 +224,7 @@ def reservoir_selection(sampled_points, n_galaxies):
     for i in range(num_samples):
         # If we haven't selected n_galaxies yet, add the current galaxy
         if i < n_galaxies:
-            selected_galaxies.append(i)
+            selected_galaxies.append(sampled_points[i])
         else:
             # If we have already selected n_galaxies, decide whether to replace one of them
             # Generate a random index j between 0 and i
