@@ -210,7 +210,7 @@ plt.ylim(10**-3, 10**5)
 plt.legend()
 plt.title('Analytical N(x) vs Sampled Points Histogram')
 plt.grid(True)
-plt.savefig('my_solution_1b.png', dpi=600)
+plt.savefig('./plots/my_solution_1b.png', dpi=600)
 
 ## 1c)
 
@@ -258,7 +258,7 @@ ax.plot(sorted_galaxies, np.arange(n_galaxies))
 ax.set(xscale='log', xlabel='Relative radius', 
        ylabel='Cumulative number of galaxies',
        xlim=(x_min, x_max), ylim=(0, n_galaxies))
-plt.savefig('my_solution_1c.png', dpi=600)
+plt.savefig('./plots/my_solution_1c.png', dpi=600)
 
 ## 1d)
 
