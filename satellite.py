@@ -236,12 +236,18 @@ def reservoir_selection(sampled_points, n_galaxies):
 
 # Define a sorting method (quicksort)
 def quick_sort(arr):
+    # Base case: if the array is empty or has only one element, it is already sorted
     if len(arr) <= 1:
         return arr
+    # Choose the pivot element as the middle element of the array
     pivot = arr[len(arr) // 2]
+    # Partition the array into three parts: 
+    # elements less, equal and greater than the pivot
     left = [x for x in arr if x < pivot]
     middle = [x for x in arr if x == pivot]
     right = [x for x in arr if x > pivot]
+    # Recursively sort the left and right parts
+    # then concatenate the three parts to produce the final sorted array
     return quick_sort(left) + middle + quick_sort(right)
 
 # Select 100 galaxies
