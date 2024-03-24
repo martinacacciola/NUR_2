@@ -4,7 +4,7 @@ from math import *
 import matplotlib.pyplot as plt
 
 '''
-This script containes the code for Exercise 1.
+This script contains the code for Exercise 1.
 '''
 
 class CombinedRNG:
@@ -22,7 +22,7 @@ class CombinedRNG:
     
     def xor_shift(self):
         # XOR-shift method
-        # The seed is converted to a 64-bit unsigned integer
+        # The seed is converted to a 64 bit unsigned integer
         # By performing a shift of 21 bits to the left and XORing the result with the original state
         self.xor_state ^= (self.xor_state << 21) & 0xFFFFFFFFFFFFFFFF
         # Then, a shift of 35 bits to the right and again XOR with the previous result
@@ -41,7 +41,7 @@ class CombinedRNG:
         # Calculate the next state by multiplying the lower 32 bits with the multiplier
         # and adding the upper 32 bits
         x_next = a * mwc_lower + mwc_upper 
-        # Update the state using AND operation with a 64-bit mask
+        # Update the state using AND operation with a 64 bit mask
         # Only the lower 64 bits are kept, the rest are set to zero
         self.mwc_state = x_next & 0xFFFFFFFFFFFFFFFF 
         return x_next >> 32
