@@ -22,14 +22,15 @@ class CombinedRNG:
     
     def xor_shift(self):
         # XOR-shift method
-        # The seed is converted to a 64 bit unsigned integer
-        # By performing a shift of 21 bits to the left and XORing the result with the original state
+        # The seed is converted to a 64-bit unsigned integer
+        # By performing a shift of 21 bits to the left and XORing the result with the original state
         self.xor_state ^= (self.xor_state << 21) & 0xFFFFFFFFFFFFFFFF
         # Then, a shift of 35 bits to the right and again XOR with the previous result
         self.xor_state ^= (self.xor_state >> 35)
         # Finally, a shift of 4 bits to the left and XOR with the previous result
         self.xor_state ^= (self.xor_state << 4) & 0xFFFFFFFFFFFFFFFF
         return self.xor_state
+
     
     def mwc(self):
         # Multiply-With-Carry (MWC) method
