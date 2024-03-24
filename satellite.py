@@ -4,7 +4,7 @@ from math import *
 import matplotlib.pyplot as plt
 
 '''
-This script contains the code for Exercise 1.
+This script containes the code for Exercise 1.
 '''
 
 class CombinedRNG:
@@ -23,14 +23,13 @@ class CombinedRNG:
     def xor_shift(self):
         # XOR-shift method
         # The seed is converted to a 64-bit unsigned integer
-        # By performing a shift of 21 bits to the left and XORing the result with the original state
+        # By performing a shift of 21 bits to the left and XORing the result with the original state
         self.xor_state ^= (self.xor_state << 21) & 0xFFFFFFFFFFFFFFFF
         # Then, a shift of 35 bits to the right and again XOR with the previous result
         self.xor_state ^= (self.xor_state >> 35)
         # Finally, a shift of 4 bits to the left and XOR with the previous result
         self.xor_state ^= (self.xor_state << 4) & 0xFFFFFFFFFFFFFFFF
         return self.xor_state
-
     
     def mwc(self):
         # Multiply-With-Carry (MWC) method
@@ -42,7 +41,7 @@ class CombinedRNG:
         # Calculate the next state by multiplying the lower 32 bits with the multiplier
         # and adding the upper 32 bits
         x_next = a * mwc_lower + mwc_upper 
-        # Update the state using AND operation with a 64 bit mask
+        # Update the state using AND operation with a 64-bit mask
         # Only the lower 64 bits are kept, the rest are set to zero
         self.mwc_state = x_next & 0xFFFFFFFFFFFFFFFF 
         return x_next >> 32
@@ -211,7 +210,7 @@ plt.ylim(10**-3, 10**5)
 plt.legend()
 plt.title('Analytical N(x) vs Sampled Points Histogram')
 plt.grid(True)
-plt.savefig('./plots/my_solution_1b.png', dpi=600)
+plt.savefig('my_solution_1b.png', dpi=600)
 
 ## 1c)
 
@@ -247,7 +246,6 @@ def quick_sort(arr):
 
 # Select 100 galaxies
 n_galaxies = 100
-#selected_galaxies = select_galaxies(sampled_points, n_galaxies)
 selected_galaxies = reservoir_selection(sampled_points, n_galaxies)
 
 # Sort the galaxies using quicksort from smallest to higher radius
@@ -259,7 +257,7 @@ ax.plot(sorted_galaxies, np.arange(n_galaxies))
 ax.set(xscale='log', xlabel='Relative radius', 
        ylabel='Cumulative number of galaxies',
        xlim=(x_min, x_max), ylim=(0, n_galaxies))
-plt.savefig('./plots/my_solution_1c.png', dpi=600)
+plt.savefig('my_solution_1c.png', dpi=600)
 
 ## 1d)
 
