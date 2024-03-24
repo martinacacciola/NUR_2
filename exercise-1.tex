@@ -1,8 +1,7 @@
 \section{Satellite galaxies around a massive central}
 The exercise is done in the script \lstinputlisting{satellite.py}. The necessary explanations of the methods used are in the comments of the code.
 For question (a), the normalization factor A we obtain is the following: \lstinputlisting{normalization.txt}.
-For question (b), we generate 3D satellite positions that statistically follow the satellite profile $n(x)$. We sample them from the probability density function $p(x)$, using the inverse transform sampling. We compare the distribution of the sampled points with $N(x)$, the analytical function describing the number of galaxies in a shell of thickness $dx$ at a given distance $x$. From Fig.\ref{fig:n_vs_hist}, we can see that the sampled points match the expected distribution. Nevertheless, we can see how the samples are not present in the first interval of $x$ values. Inverse sampling works by transforming uniform random numbers into samples from the desired distribution, using the cumulative distribution function (CDF) of the PDF. The CDF maps values from the sample space to the interval [0, 1], and its inverse can be used to map values from [0, 1] back to the sample space. In the case of smaller values, a small range of uniform random numbers can map to a large range of small values in the sample space, leading to undersampling in these regions.
-This might explain why there is a discrepancy at smaller values in our histogram.
+For question (b), we generate 3D satellite positions that statistically follow the satellite profile $n(x)$. We sample them from the probability density function $p(x)$, using the inverse transform sampling. We compare the distribution of the sampled points with $N(x)$, the analytical function describing the number of galaxies in a shell of thickness $dx$ at a given distance $x$. From Fig.\ref{fig:n_vs_hist}, we can see that the sampled points match the expected distribution. Nevertheless, we can see how the samples are not present in the first interval of $x$ values. Inverse sampling works by transforming uniform random numbers into samples from the desired distribution, using the cumulative distribution function (CDF) of the PDF. The CDF maps values from the sample space to the interval [0, 1], and its inverse can be used to map values from [0, 1] back to the sample space. In the case of smaller values, a small range of uniform random numbers can map to a large range of small values in the sample space, leading to undersampling in these regions. This might explain why there is a discrepancy at smaller values in our histogram.
 
 \begin{figure}[h!]
   \centering
@@ -11,21 +10,17 @@ This might explain why there is a discrepancy at smaller values in our histogram
   \label{fig:n_vs_hist}
 \end{figure}
 
-For question (c), we select 100 random galaxies using Reservoir sampling. It is an algorithm that chooses a random sample, without replacement, of k items from a population of unknown size n in a single pass over the items. 
+For question (c), we select 100 random galaxies from the ones sampled in point (b), using Reservoir method. It is a sampling algorithm that chooses a random sample, without replacement, of $k$ items from a population of unknown size $n$ in a single pass over the items. The 100 drawn galaxies are ordered from smallest to largest radius. The number of galaxies within a radius $x$ are shown in Fig. \ref{fig:cum_galaxies}. The radii selected are starting from higher values because of the previous undersampling. The increasing trend makes sense as the number of galaxies within a given radius should increase as the radius increases.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.9\linewidth]{./plots/my_solution_1c.png}
+  \caption{Plot showing the cumulative number of galaxies randomly selected with respect to the relative radius $x$. The number of galaxies progressively increases with larger distances.}
+  \label{fig:cum_galaxies}
+\end{figure}
+
+For question (d), we compute the derivative of the function $n(x)$ using both the Ridders' method and the analytical procedure. The obtained results can be seen in: \lstinputlisting{derivative.txt.txt}
 
 
 \section{Heating and cooling in HII regions}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.9\linewidth]{./plots/my_vandermonde_sol_2b.png}
-  \caption{Upper panel: Interpolation on a set of given data points via Neville's algorithm. The polynomial obtained fits the data points well in the range considered, in the same way the interpolation of LU decomposition does. Bottom panel: Absolute difference between the given points $y_i$ and our result $y(x)$, i.e. $|y(x) - y_{i}|$. The errors of Neville's algorithm reach very small values with respect to LU decomposition's ones. }
-  \label{fig:neville}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.8\linewidth]{./plots/my_vandermonde_sol_2c.png}
-  \caption{Upper panel: Interpolation on a set of given data points via LU decomposition, with iterative improvement of the found solution (done with 1 and 10 iterations). Both the fits are going through all the data points exactly, hence the overlap. Bottom panel: Absolute difference between the given points $y_i$ and our result $y(x)$, i.e. $|y(x) - y_{i}|$. The trend is similar for the two implementations, with a small decrease in values reached by LU with 10 iterations.}
-  \label{fig:lu_iter}
-\end{figure}
