@@ -248,12 +248,30 @@ def quick_sort(arr, low, high):
 
 # This function partitions the array around a pivot
 def partition(arr, low, high):
-    # The pivot element is chosen as the element at the high index
-    pivot = arr[high]
+    # Choose the pivot as the median of the first, middle, and last elements
+    mid = low + (high - low) // 2
+    pivot = arr[mid]
+    
+    # If the first element is greater than the middle element, swap them
+    if arr[low] > arr[mid]:
+        arr[low], arr[mid] = arr[mid], arr[low]
+    
+    # If the middle element is greater than the last element, swap them
+    if arr[mid] > arr[high]:
+        arr[mid], arr[high] = arr[high], arr[mid]
+    
+    # If the first element is greater than the middle element, swap them
+    if arr[low] > arr[mid]:
+        arr[low], arr[mid] = arr[mid], arr[low]
+    
+    # Now the middle element is the median of the first, middle, and last elements
+    pivot = arr[mid]
+    
+    # Swap the pivot with the high element
+    arr[mid], arr[high] = arr[high], arr[mid]
     
     # i is set to one index less than the low index
     i = (low - 1)
-
     # The array is iterated from the low to the high index
     for j in range(low , high):
         # If the element is less than or equal to the pivot, the element is swapped with the one at index i + 1
@@ -263,8 +281,7 @@ def partition(arr, low, high):
 
     # After all elements have been checked, the pivot is swapped with the element at index i + 1
     # placing the pivot in its correct position in the sorted array
-    arr[i + 1],arr[high] = arr[high],arr[i + 1]
-    
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
     # Return the final position of the pivot
     return (i + 1)
 
