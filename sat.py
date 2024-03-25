@@ -23,7 +23,7 @@ class CombinedRNG:
     def xor_shift(self):
         # XOR-shift method
         # The seed is converted to a 64-bit unsigned integer
-        # By performing a shift of 21 bits to the left and XORing the result with the original state
+        #By performing a shift of 21 bits to the left and XORing the result with the original state
         self.xor_state ^= (self.xor_state << 21) & 0xFFFFFFFFFFFFFFFF
         # Then, a shift of 35 bits to the right and again XOR with the previous result
         self.xor_state ^= (self.xor_state >> 35)
@@ -94,7 +94,7 @@ def trapezoidal_rule(f, a, b, n):
     result = 0.5 * (f(a) + f(b)) 
     for i in range(1, n):
         # Add the value of the function at each interior point
-        # Each of the function values corresponds to the height of a trapezoid
+        #Each of the function values corresponds to the height of a trapezoid
         result += f(a + i * h)
     # Multiply the sum by the width of the trapezoids
     # This gives the total area under the curve
@@ -210,7 +210,7 @@ plt.ylim(10**-3, 10**5)
 plt.legend()
 plt.title('Analytical N(x) vs Sampled Points Histogram')
 plt.grid(True)
-plt.savefig('./plots/my_solution_1b.png', dpi=600)
+plt.savefig('my_solution_1b.png', dpi=600)
 
 ## 1c)
 
@@ -236,17 +236,22 @@ def reservoir_selection(sampled_points, n_galaxies):
 
 # Define a sorting method (quicksort)
 def quick_sort(arr):
+    # Base case: if the array is empty or has only one element, it is already sorted
     if len(arr) <= 1:
         return arr
+    # Choose the pivot element as the middle element of the array
     pivot = arr[len(arr) // 2]
+    # Partition the array into three parts: 
+    # elements less, equal and greater than the pivot
     left = [x for x in arr if x < pivot]
     middle = [x for x in arr if x == pivot]
     right = [x for x in arr if x > pivot]
+    # Recursively sort the left and right parts
+    # then concatenate the three parts to produce the final sorted array
     return quick_sort(left) + middle + quick_sort(right)
 
 # Select 100 galaxies
 n_galaxies = 100
-#selected_galaxies = select_galaxies(sampled_points, n_galaxies)
 selected_galaxies = reservoir_selection(sampled_points, n_galaxies)
 
 # Sort the galaxies using quicksort from smallest to higher radius
@@ -258,7 +263,7 @@ ax.plot(sorted_galaxies, np.arange(n_galaxies))
 ax.set(xscale='log', xlabel='Relative radius', 
        ylabel='Cumulative number of galaxies',
        xlim=(x_min, x_max), ylim=(0, n_galaxies))
-plt.savefig('./plots/my_solution_1c.png', dpi=600)
+plt.savefig('my_solution_1c.png', dpi=600)
 
 ## 1d)
 
@@ -293,7 +298,7 @@ def ridders_method(f, x, h, m, tol=1e-10):
 
 
 # Calculate the analytical result using derivative function 
-# Following the formal definition of the derivative
+#Following the formal definition of the derivative
 def derivative_n(f, x, h= 1e-10):
     return (f(x + h) - f(x)) / h
 
