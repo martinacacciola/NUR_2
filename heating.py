@@ -126,7 +126,7 @@ for n_e in densities:
         T_eq_secant, num_steps_brent, time_taken_brent = secant_method(equilibrium_2, a_brent, b_brent, n_e)
         
         # Print the result
-        with open('2b.txt', 'w') as f:
+        with open('2b.txt', 'a') as f:
             if T_eq_secant is not None:
                 f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_secant:.2f} K (using secant method).\n")
                 f.write(f"The secant method found the root in {num_steps_brent} steps.\n")
