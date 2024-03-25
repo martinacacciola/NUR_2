@@ -73,26 +73,33 @@ def equilibrium_2(T, n_e):
 
 # Bisection method
 def bisection_method(f, a, b, n_e, tol=1e-10, max_iter=100):
+    # Check if the function values at the interval endpoints have the same sign
     if f(a, n_e) * f(b, n_e) >= 0:
-        print("Bisection method fails.")
-        return None, None, None
-    
-    num_steps = 0
-    start_time = time.time()
-    while (b - a) / 2 > tol and num_steps < max_iter:
-        c = (a + b) / 2
-        if f(c, n_e) == 0:
-            end_time = time.time()
-            return c, num_steps + 1, end_time - start_time
-        
-        if f(c, n_e) * f(a, n_e) < 0:
-            b = c
-        else:
-            a = c
-        num_steps += 1
+        print("Bisection method fails.") 
+        return None, None, None  
 
-    end_time = time.time()
-    return (a + b) / 2, num_steps, end_time - start_time
+    num_steps = 0 
+    start_time = time.time()  
+    # Iterate until convergence or maximum iterations
+    while (b - a) / 2 > tol and num_steps < max_iter: 
+        # Midpoint of the interval
+        c = (a + b) / 2  
+         # Check if the midpoint is already the root
+        if f(c, n_e) == 0: 
+            end_time = time.time() 
+            return c, num_steps + 1, end_time - start_time 
+
+        # Oheck if the root lies between a and c
+        if f(c, n_e) * f(a, n_e) < 0:  
+             # Update the upper bound 
+            b = c 
+        else:
+            # Update the lower bound
+            a = c 
+        num_steps += 1  
+
+    end_time = time.time()  
+    return (a + b) / 2, num_steps, end_time - start_time 
 
 # Secant method
 def secant_method(f, x0, x1, n_e, tol=1e-10, max_iter=100):
@@ -117,25 +124,14 @@ with open('2b.txt', 'w') as f:
     for n_e in densities:
         # Initial interval for bisection method
         a_bisection = 1
-        b_bisection = 1e7
+        b_bisection = 1e15
         T_eq_bisection, num_steps_bisection, time_taken_bisection = bisection_method(equilibrium_2, a_bisection, b_bisection, n_e)
 
-        if T_eq_bisection is None:
-            # If bisection method fails, use brent method
-            a_brent = 1
-            b_brent = 1e7
-            T_eq_secant, num_steps_brent, time_taken_brent = secant_method(equilibrium_2, a_brent, b_brent, n_e)
-
             # Write the result to the file
-            if T_eq_secant is not None:
-                f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_secant:.2f} K (using secant method).\n")
-                f.write(f"The secant method found the root in {num_steps_brent} steps.\n")
-                f.write(f"The time taken was {time_taken_brent:.6f} seconds.\n\n")
+            if T_eq_bisection is not None:
+                f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_bisection:.2f} K.\n")
+                f.write(f"The bisection method found the root in {num_steps_bisection} steps.\n")
+                f.write(f"The time taken was {time_taken_bisection:.6f} seconds.\n\n")
             else:
-                f.write(f"For n_e = {n_e} cm^-3, both bisection and secant methods failed to converge.\n\n")
-        else:
-            # Write the result to the file using bisection method
-            f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_bisection:.2f} K (using bisection method).\n")
-            f.write(f"The bisection method found the root in {num_steps_bisection} steps.\n")
-            f.write(f"The time taken was {time_taken_bisection:.6f} seconds.\n\n")
-
+                f.write(f"For n_e = {n_e} cm^-3, the bisection method failed to converge.\n\n")
+    
