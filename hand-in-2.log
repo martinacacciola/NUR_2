@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  25 MAR 2024 19:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  25 MAR 2024 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,8 +403,8 @@ Package rerunfilecheck Info: File `hand-in-2.out' has not changed.
 (rerunfilecheck)             Checksum: E7B727F9BE81249348AB843E44AA11F6;501.
  ) 
 Here is how much of TeX's memory you used:
- 11572 strings out of 476025
- 177618 string characters out of 5790018
+ 11575 strings out of 476025
+ 177663 string characters out of 5790018
  2734388 words of memory out of 5000000
  31325 multiletter control sequences out of 15000+600000
  517999 words of font info for 52 fonts, out of 8000000 for 9000
@@ -422,10 +422,10 @@ exlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
 ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 /2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
 023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on hand-in-2.pdf (11 pages, 706651 bytes).
+Output written on hand-in-2.pdf (11 pages, 706902 bytes).
 PDF statistics:
- 769 PDF objects out of 1000 (max. 8388607)
- 720 compressed objects within 8 object streams
- 536 named destinations out of 1000 (max. 500000)
+ 772 PDF objects out of 1000 (max. 8388607)
+ 723 compressed objects within 8 object streams
+ 539 named destinations out of 1000 (max. 500000)
  27 words of extra memory for PDF output out of 10000 (max. 10000000)
 

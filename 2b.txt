@@ -1,3 +1,6 @@
 For n_e = 0.0001 cm^-3, the equilibrium temperature is -56186.85-3.86j K (using secant method).
 The secant method found the root in 100 steps.
 The time taken was 0.000326 seconds.
+For n_e = 0.0001 cm^-3, the equilibrium temperature is -56186.85-3.86j K (using secant method).
+The secant method found the root in 100 steps.
+The time taken was 0.000111 seconds.
