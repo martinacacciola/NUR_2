@@ -234,7 +234,6 @@ def reservoir_selection(sampled_points, n_galaxies):
 
 # Define a sorting method (quicksort)
 # Takes an array and two indices: low (starting index of the array) and high (last index)
-
 def quick_sort(arr, low, high):
     # If the low index is less than the high index, there are elements in the array to be sorted
     if low < high:
