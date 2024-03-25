@@ -4,7 +4,7 @@ from math import *
 import matplotlib.pyplot as plt
 
 '''
-This script containes the code for Exercise 1.
+This script contains the code for Exercise 1.
 '''
 
 class CombinedRNG:
