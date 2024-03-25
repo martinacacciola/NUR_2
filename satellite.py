@@ -233,20 +233,41 @@ def reservoir_selection(sampled_points, n_galaxies):
     return selected_galaxies
 
 # Define a sorting method (quicksort)
-def quick_sort(arr):
-    # Base case: if the array is empty or has only one element, it is already sorted
-    if len(arr) <= 1:
-        return arr
-    # Choose the pivot element as the middle element of the array
-    pivot = arr[len(arr) // 2]
-    # Partition the array into three parts: 
-    # elements less, equal and greater than the pivot
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    # Recursively sort the left and right parts
-    # then concatenate the three parts to produce the final sorted array
-    return quick_sort(left) + middle + quick_sort(right)
+# Takes an array and two indices: low (starting index of the array) and high (last index)
+
+def quick_sort(arr, low, high):
+    # If the low index is less than the high index, there are elements in the array to be sorted
+    if low < high:
+        # partition function called to partition the array around a pivot.
+        # The pivot's final position in the sorted array is returned as pi
+        pi = partition(arr, low, high)
+        
+        # quick_sort function recursively called for the parts of the array before pi and after pi
+        quick_sort(arr, low, pi - 1)
+        quick_sort(arr, pi + 1, high)
+    return arr
+
+# This function partitions the array around a pivot
+def partition(arr, low, high):
+    # The pivot element is chosen as the element at the high index
+    pivot = arr[high]
+    
+    # i is set to one index less than the low index
+    i = (low - 1)
+
+    # The array is iterated from the low to the high index
+    for j in range(low , high):
+        # If the element is less than or equal to the pivot, the element is swapped with the one at index i + 1
+        if arr[j] <= pivot:
+            i = i + 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    # After all elements have been checked, the pivot is swapped with the element at index i + 1
+    # placing the pivot in its correct position in the sorted array
+    arr[i + 1],arr[high] = arr[high],arr[i + 1]
+    
+    # Return the final position of the pivot
+    return (i + 1)
 
 # Select 100 galaxies
 n_galaxies = 100
