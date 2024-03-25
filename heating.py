@@ -113,28 +113,29 @@ def secant_method(f, x0, x1, n_e, tol=1e-10, max_iter=100):
 # Densities to consider
 densities = [1e-4, 1, 1e4]
 
-for n_e in densities:
-    # Initial interval for bisection method
-    a_bisection = 1
-    b_bisection = 1e7
-    T_eq_bisection, num_steps_bisection, time_taken_bisection = bisection_method(equilibrium_2, a_bisection, b_bisection, n_e)
-    
-    if T_eq_bisection is None:
-        # If bisection method fails, use brent method
-        a_brent = 1
-        b_brent = 1e7
-        T_eq_secant, num_steps_brent, time_taken_brent = secant_method(equilibrium_2, a_brent, b_brent, n_e)
-        
-        # Print the result
-        with open('2b.txt', 'a') as f:  # open in append mode
+with open('2b.txt', 'w') as f:
+    for n_e in densities:
+        # Initial interval for bisection method
+        a_bisection = 1
+        b_bisection = 1e7
+        T_eq_bisection, num_steps_bisection, time_taken_bisection = bisection_method(equilibrium_2, a_bisection, b_bisection, n_e)
+
+        if T_eq_bisection is None:
+            # If bisection method fails, use brent method
+            a_brent = 1
+            b_brent = 1e7
+            T_eq_secant, num_steps_brent, time_taken_brent = secant_method(equilibrium_2, a_brent, b_brent, n_e)
+
+            # Write the result to the file
             if T_eq_secant is not None:
                 f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_secant:.2f} K (using secant method).\n")
                 f.write(f"The secant method found the root in {num_steps_brent} steps.\n")
                 f.write(f"The time taken was {time_taken_brent:.6f} seconds.\n\n")
             else:
-                if T_eq_bisection is not None:
-                    f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_bisection:.2f} K (using bisection method).\n")
-                    f.write(f"The bisection method found the root in {num_steps_bisection} steps.\n")
-                    f.write(f"The time taken was {time_taken_bisection:.6f} seconds.\n\n")
-                else:
-                    f.write(f"For n_e = {n_e} cm^-3, both bisection and secant methods failed to converge.\n\n")
+                f.write(f"For n_e = {n_e} cm^-3, both bisection and secant methods failed to converge.\n\n")
+        else:
+            # Write the result to the file using bisection method
+            f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_bisection:.2f} K (using bisection method).\n")
+            f.write(f"The bisection method found the root in {num_steps_bisection} steps.\n")
+            f.write(f"The time taken was {time_taken_bisection:.6f} seconds.\n\n")
+
