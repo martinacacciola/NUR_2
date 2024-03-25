@@ -68,8 +68,6 @@ c = 1.6
 xmax = 5
 Nsat = 100
 
-## 1a)
-
 def integrand(x):
     # Take into account singularity at x=0
     # Consider the volume element is 4*pi*x^2 (4*pi is taken outside)
