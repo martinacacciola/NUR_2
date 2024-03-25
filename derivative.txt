@@ -1,0 +1,2 @@
+Analytical result: -0.615624912159
+Numerical result: -0.615624525721

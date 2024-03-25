@@ -1,0 +1,1 @@
+The result of the numerical integration is: 9.05216643171278
