@@ -8,11 +8,11 @@ if [ ! -d "plots" ]; then
   mkdir plots
 fi
 
-# Run poisson.py script
+# Run satellite.py script
 echo "Run the Satellite script ..."
 python3 satellite.py
 
-# Run vandermonde.py script
+# Run heating.py script
 echo "Run the Heating script ..."
 python3 heating.py
 
