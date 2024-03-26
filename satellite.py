@@ -290,7 +290,7 @@ n_galaxies = 100
 selected_galaxies = reservoir_selection(sampled_points, n_galaxies)
 
 # Sort the galaxies using quicksort from smallest to higher radius
-sorted_galaxies = quick_sort(selected_galaxies)
+sorted_galaxies = quick_sort(selected_galaxies,0,len(selected_galaxies)-1)
 
 # Plot the cumulative number of the chosen galaxies
 fig1c, ax = plt.subplots()
