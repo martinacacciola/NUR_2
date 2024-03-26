@@ -1,12 +1,12 @@
 For n_e = 0.0001 cm^-3, the equilibrium temperature is 160561340829973.25 K.
 The bisection method found the root in 54 steps.
-The time taken was 0.000035 seconds.
+The time taken was 0.000090 seconds.
 
 For n_e = 1 cm^-3, the equilibrium temperature is 34243.13 K.
 The bisection method found the root in 83 steps.
-The time taken was 0.000057 seconds.
+The time taken was 0.000170 seconds.
 
 For n_e = 10000.0 cm^-3, the equilibrium temperature is 29.12 K.
 The bisection method found the root in 83 steps.
-The time taken was 0.000052 seconds.
+The time taken was 0.000136 seconds.
 
