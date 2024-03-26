@@ -116,22 +116,6 @@ def bisection_method_ne(f, a, b, n_e, tol=1e-10, max_iter=100):
     end_time = time.time()  
     return (a + b) / 2, num_steps, end_time - start_time 
 
-# Secant method
-def secant_method(f, x0, x1, n_e, tol=1e-10, max_iter=100):
-    num_steps = 0
-    start_time = time.time()
-    while num_steps < max_iter:
-        x_new = x1 - f(x1, n_e) * (x1 - x0) / (f(x1, n_e) - f(x0, n_e))
-        if abs(x_new - x1) < tol:
-            end_time = time.time()
-            return x_new, num_steps + 1, end_time - start_time
-        
-        x0, x1 = x1, x_new
-        num_steps += 1
-
-    end_time = time.time()
-    return x_new, num_steps, end_time - start_time
-
 # Densities to consider
 densities = [1e-4, 1, 1e4]
 
