@@ -55,7 +55,7 @@ a = 1
 b = 1e7
 T_eq, num_steps, time_taken = bisection_method(equilibrium_1, a, b)
 
-# Output
+
 if T_eq is not None:
     output_text = (f"The equilibrium temperature is {T_eq:.2f} K.\n"
                    f"The bisection method found the root in {num_steps} steps.\n"
