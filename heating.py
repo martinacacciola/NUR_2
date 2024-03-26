@@ -55,13 +55,17 @@ a = 1
 b = 1e7
 T_eq, num_steps, time_taken = bisection_method(equilibrium_1, a, b)
 
-# Print the result
+# Output
 if T_eq is not None:
-    print(f"The equilibrium temperature is {T_eq:.2f} K.")
-    print(f"The bisection method found the root in {num_steps} steps.")
-    print(f"The time taken was {time_taken:.10f} seconds.")
+    output_text = (f"The equilibrium temperature is {T_eq:.2f} K.\n"
+                   f"The bisection method found the root in {num_steps} steps.\n"
+                   f"The time taken was {time_taken:.10f} seconds.\n")
 else:
-    print("The bisection method did not converge.")
+    output_text = "The bisection method did not converge."
+
+# Writing output to a file
+with open("2a.txt", "w") as file:
+    file.write(output_text)
     
 ## 2b)
 
