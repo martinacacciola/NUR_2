@@ -1,3 +1,3 @@
 The equilibrium temperature is 3.12 K.
 The bisection method found the root in 56 steps.
-The time taken was 0.0001080036 seconds.
+The time taken was 0.0001070499 seconds.
