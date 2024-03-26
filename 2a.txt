@@ -1,3 +1,0 @@
-The equilibrium temperature is 3.12 K.
-The Newton-Raphson method found the root in 18 steps.
-The time taken was 0.0000488758 seconds.
