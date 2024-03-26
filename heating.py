@@ -7,22 +7,41 @@ This script contains the code for Exercise 2.
 
 ## 2a)
 
-# Define the Newton-Raphson method
-def newton_raphson(f, df, x0, tol=1e-6, max_iter=100):
+# Define the equilibrium function
+def equilibrium_1(T):
+    term1 = psi * Tc * k 
+    term2 = (0.684 - 0.0416 * np.log(T / (1e4 * Z * Z))) * T * k 
+    return term1 - term2
+
+# Measure the time taken and find the root of the equilibrium function using the bisection method
+def bisection_method(f, a, b, tol=1e-10, max_iter=100):
     '''
-    Find the root of the function f(x) = 0
-    Takes the function f, its derivative df, an initial guess x0, and optional arguments tol and max_iter
-    Improve iteratively the estimate of the root 
-    until the change in x is less than the specified tolerance
-    or the maximum number of iterations is reached
+    Find the root of the function f(x) = 0 using the bisection method
+    Takes the function f, the endpoints of the initial interval [a, b],
+    and optional arguments tol and max_iter
     '''
-    x = x0
-    for i in range(max_iter):
-        x_new = x - f(x) / df(x)
-        if abs(x - x_new) < tol:
-            return x_new, i+1
-        x = x_new
-    return None, i+1  # Ensure that a tuple is returned
+    if f(a) * f(b) >= 0:
+        print("Bisection method fails.")
+        return None, None
+    
+    # Initialize values
+    num_steps = 0
+    start_time = time.time()
+    while (b - a) / 2 > tol and num_steps < max_iter:
+        c = (a + b) / 2
+        if f(c) == 0:
+            end_time = time.time()
+            return c, num_steps + 1, end_time - start_time
+        
+        # Update the interval
+        if f(c) * f(a) < 0:
+            b = c
+        else:
+            a = c
+        num_steps += 1
+
+    end_time = time.time()
+    return (a + b) / 2, num_steps, end_time - start_time
 
 # Define the constants
 k = 1.38e-16 # erg/K
@@ -30,37 +49,20 @@ aB = 2e-13 # cm^3 / s
 Z = 0.015 # metallicity 
 Tc = 1e4 * Z**2 # stellar temperature in K 
 psi = 0.929 
-A = 5e-10 # erg
-epsilon_CR = 1e-15 # s^-1
 
-# Define the equilibrium function
-def equilibrium_1(T):
-    term1 = psi*Tc*k 
-    term2 = (0.684 - 0.0416 * np.log(T/(1e4 * Z*Z)))*T*k 
-    return term1 - term2
-
-# Define the derivative of the equilibrium function
-def derivative_1(T):
-    term1 = -psi*Tc*k / (T*T) # wrong??? why does it work
-    term2 = (0.684 - 0.0416 * np.log(T/(1e4 * Z*Z))) + 0.0416 * T / (T * np.log(10))
-    return term1 - term2*k
-
-# Measure the time taken and find the root of the equilibrium function
-# The initial guess is the midpoint of the bracket [1, 10^7]
-start_time = time.time()
-T_eq, num_steps = newton_raphson(equilibrium_1, derivative_1, (1 + 10**7) / 2)
-end_time = time.time()
+# Measure the time taken and find the root of the equilibrium function using the bisection method
+a = 1
+b = 1e7
+T_eq, num_steps, time_taken = bisection_method(equilibrium_1, a, b)
 
 # Print the result
-with open('2a.txt', 'w') as f:
-    if T_eq is not None:
-        f.write(f"The equilibrium temperature is {T_eq:.2f} K.\n")
-        f.write(f"The Newton-Raphson method found the root in {num_steps} steps.\n")
-        f.write(f"The time taken was {end_time - start_time:.10f} seconds.\n")
-    else:
-        f.write("The Newton-Raphson method did not converge.\n")
-
-
+if T_eq is not None:
+    print(f"The equilibrium temperature is {T_eq:.2f} K.")
+    print(f"The bisection method found the root in {num_steps} steps.")
+    print(f"The time taken was {time_taken:.10f} seconds.")
+else:
+    print("The bisection method did not converge.")
+    
 ## 2b)
         
 # Define the equilibrium function
@@ -72,7 +74,7 @@ def equilibrium_2(T, n_e):
     return term1 - term2 - term3
 
 # Bisection method
-def bisection_method(f, a, b, n_e, tol=1e-10, max_iter=100):
+def bisection_method_ne(f, a, b, n_e, tol=1e-10, max_iter=100):
     # Check if the function values at the interval endpoints have the same sign
     if f(a, n_e) * f(b, n_e) >= 0:
         print("Bisection method fails.") 
@@ -125,7 +127,7 @@ with open('2b.txt', 'w') as f:
         # Initial interval for bisection method
         a_bisection = 1
         b_bisection = 1e15
-        T_eq_bisection, num_steps_bisection, time_taken_bisection = bisection_method(equilibrium_2, a_bisection, b_bisection, n_e)
+        T_eq_bisection, num_steps_bisection, time_taken_bisection = bisection_method_ne(equilibrium_2, a_bisection, b_bisection, n_e)
 
             # Write the result to the file
             if T_eq_bisection is not None:
