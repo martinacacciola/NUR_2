@@ -64,6 +64,15 @@ else:
     print("The bisection method did not converge.")
     
 ## 2b)
+
+# Define the constants
+k = 1.38e-16 # erg/K
+aB = 2e-13 # cm^3 / s
+Z = 0.015 # metallicity 
+Tc = 1e4 * Z**2 # stellar temperature in K 
+psi = 0.929 
+A = 5e-10 # erg
+epsilon_CR = 1e-15 # s^-1
         
 # Define the equilibrium function
 def equilibrium_2(T, n_e):
