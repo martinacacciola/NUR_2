@@ -129,11 +129,11 @@ with open('2b.txt', 'w') as f:
         b_bisection = 1e15
         T_eq_bisection, num_steps_bisection, time_taken_bisection = bisection_method_ne(equilibrium_2, a_bisection, b_bisection, n_e)
 
-            # Write the result to the file
-            if T_eq_bisection is not None:
-                f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_bisection:.2f} K.\n")
-                f.write(f"The bisection method found the root in {num_steps_bisection} steps.\n")
-                f.write(f"The time taken was {time_taken_bisection:.6f} seconds.\n\n")
-            else:
-                f.write(f"For n_e = {n_e} cm^-3, the bisection method failed to converge.\n\n")
+        # Write the result to the file
+        if T_eq_bisection is not None:
+            f.write(f"For n_e = {n_e} cm^-3, the equilibrium temperature is {T_eq_bisection:.2f} K.\n")
+            f.write(f"The bisection method found the root in {num_steps_bisection} steps.\n")
+            f.write(f"The time taken was {time_taken_bisection:.6f} seconds.\n\n")
+        else:
+            f.write(f"For n_e = {n_e} cm^-3, the bisection method failed to converge.\n\n")
     
