@@ -166,7 +166,7 @@ def inverse_transform_sampling(pdf, n_samples, x_min, x_max):
     # Generate random numbers uniformly distributed between 0 and 1
     random_numbers = rng.uniform(0, 1, num_samples=n_samples)
     
-    # Apply the inverse CDF to the random numbers
+    
     # For each random number, find the corresponding value of x 
     # such that the CDF of x is equal to the random number
     # This is done by finding the first x value for which the CDF is greater than the random number
