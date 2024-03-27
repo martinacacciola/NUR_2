@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  26 MAR 2024 12:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  27 MAR 2024 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,17 +375,17 @@ llite.py
 <./plots/my_solution_1b.png, id=273, 722.7pt x 433.62pt>
 File: ./plots/my_solution_1b.png Graphic file (type png)
 <use ./plots/my_solution_1b.png>
-Package pdftex.def Info: ./plots/my_solution_1b.png  used on input line 9.
+Package pdftex.def Info: ./plots/my_solution_1b.png  used on input line 10.
 (pdftex.def)             Requested size: 407.66833pt x 244.59877pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(./satellite.py [5] [6 <./plots/my_solution_1b.png>])
+[5] (./satellite.py [6 <./plots/my_solution_1b.png>])
 <./plots/my_solution_1c.png, id=369, 462.528pt x 346.896pt>
 File: ./plots/my_solution_1c.png Graphic file (type png)
 <use ./plots/my_solution_1c.png>
-Package pdftex.def Info: ./plots/my_solution_1c.png  used on input line 19.
+Package pdftex.def Info: ./plots/my_solution_1c.png  used on input line 20.
 (pdftex.def)             Requested size: 407.66833pt x 305.76697pt.
  (./satellite.py [7 <./plots/my_solution_1c.png>]) (./derivative.txt) (./heatin
 g.py [8]
@@ -409,7 +409,7 @@ Here is how much of TeX's memory you used:
  31316 multiletter control sequences out of 15000+600000
  518642 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,6n,79p,991b,2101s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,6n,79p,1049b,2101s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -428,7 +428,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf
 -dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-d
 ist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on hand-in-2.pdf (11 pages, 763099 bytes).
+Output written on hand-in-2.pdf (11 pages, 762243 bytes).
 PDF statistics:
  794 PDF objects out of 1000 (max. 8388607)
  733 compressed objects within 8 object streams
